@@ -6,10 +6,10 @@ $(document).ready(function () {
   var modal = $('.modal');
   var modelCloseButton = $('.modal-close-button');
   var viewFlatsButton = $('.view-flats');
-  
-  var flatPath =$('.flats path'); //каждая отдельная квартира на этаже в SVG
-  var currentFlat =0;//переменная хранящая номер квартиры
 
+  var currentFlats = 1; // переменная с текущей квартирой
+  var flatsPath = $('.flats path'); // квартиры SVG
+  var flatsPathItem = $('.flat-item a'); // характеристики квартир
 
   //Выделяется этаж при наведении мышкой
   floorPath.on('mouseover', function () {
@@ -51,15 +51,22 @@ $(document).ready(function () {
   //функция закрытия-открытия модального окна
   function toggleModal() {
     modal.toggleClass('is-open');
-  };
+  }
 
-   //Выделяется КВАРТИРА при наведении мышкой
-    flatPath.on('mouseover', function () {
-    //flatPath.removeClass('current-flat'); //удаляем активный класс (у выделенного этажа)
-    currentFlat = $(this).attr('data-flat'); //получаем значение текущей квартиры
-    $('.counter').text(currentFlat); //записываем значения этажа в счетчик справа
-    
+  //Выделяется КВАРТИРА при наведении мышкой
+  flatsPath.on('mouseover', function () {
+    currentFlats = $(this).attr('data-flats'); // записываем текущее значение в переменную с квартирами
+    flatsPath.removeClass('current-flats'); // удаляем класс квартир
+    flatsPathItem.removeClass('current-flats-item'); // удаляем класс характеристик квартиры
+    $(`[data-flats=${currentFlats}]`).toggleClass('current-flats'); // добавляем класс квартиры
+    $(`[data-item=${currentFlats}]`).toggleClass('current-flats-item'); // добавляем класс характеристик квартиры
   });
 
-
+  flatsPathItem.on('mouseover', function () {
+    currentFlats = $(this).attr('data-item'); // записываем текущее значение в переменную с квартирами
+    flatsPath.removeClass('current-flats'); // удаляем класс квартир
+    flatsPathItem.removeClass('current-flats-item'); // удаляем класс характеристик квартиры
+    $(`[data-flats=${currentFlats}]`).toggleClass('current-flats'); // добавляем класс квартиры
+    $(`[data-item=${currentFlats}]`).toggleClass('current-flats-item'); // добавляем класс характеристик квартиры
+  });
 });
