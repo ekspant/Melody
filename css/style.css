@@ -94,16 +94,6 @@ path.current-floor {
   opacity: 1;
 }
 
-a.current-flats-item {
-  color: #3596f5; /* меняем цвет */
-  text-decoration: underline; /* добавляем подчёркивание */
-  cursor: pointer; /* сделали, чтобы при наведении на path была рука :D */
-}
-
-path.current-flats {
-  opacity: 1; /* убираем прозрачность */
-}
-
 .counter-group {
   display: flex;
   flex-direction: column;
@@ -267,14 +257,13 @@ path.current-flats {
 }
 .footer-social {
   flex-direction: row;
-  align-items:center;
-  
+  align-items: center;
 }
 
 .social-link {
   padding: 5px;
   flex-direction: row;
-  align-items:center;
+  align-items: center;
   align-content: center;
 }
 
@@ -316,4 +305,13 @@ path.current-flats {
 .footer-link {
   text-decoration: none;
   color: #635854;
+}
+a.current-flats-item {
+  color: #3596f5; /* меняем цвет */
+  text-decoration: underline; /* добавляем подчёркивание */
+  cursor: pointer; /* сделали, чтобы при наведении на path была рука :D */
+}
+
+path.current-flats {
+  opacity: 1; /* убираем прозрачность */
 }
